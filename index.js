@@ -79,7 +79,20 @@ client.connect(err => {
         res.send(items)
       })
   })
+ 
+//update Status
+app.patch('/update:id', (req, res) => {
+  orderCollection.updateOne({_id: ObjectID(req.params.id)},
+  {
+    $set:{status: req.body.value}
+  })
+  .then(result =>{
+    console.log(result)
+    res.send(result.modifiedCount > 0)
+  })
+})
 
+  //admin verified
   app.post('/isAdmin', (req, res) => {
     const email = req.body.email;
     adminCollection.find({ email: email })
@@ -91,7 +104,7 @@ client.connect(err => {
 })
 
 app.get('/', (req, res) => {
-  res.send("Welcome to Red Onion Server");
+  res.send("Welcome to Event management Server");
 })
 
 app.post('/addevent', (req, res) => {
