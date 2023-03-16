@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 const port = process.env.PORT || 8080;
 
-// const uri = `mongodb+srv://event_management:jJV6SLrMlWiZItkh@cluster0.ossg7.mongodb.net/eventsmanagement?retryWrites=true&w=majority`;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ossg7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
