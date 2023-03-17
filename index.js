@@ -166,7 +166,7 @@ app.post("/addSpeaker", (req, res) => {
     });
   });
 });
-
+client.close();
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
